@@ -4,7 +4,7 @@ A data type checker and validator.
 - [Installation](#installation)
 - [Test](#test)
 - [API](#API)
-  - [is.object](#is.object)
+  - [is.object](#object)
   - [is.null](#is.null)
   - [is.undefined](#is.undefined)
   - [is.number](#is.number)
@@ -55,7 +55,7 @@ const is = require('@ncardez/is');
 npm run test
 ```
 
-## is.object
+## object
 - ``is.object`` (value``: object``) ``:boolean``
 
 ```js
