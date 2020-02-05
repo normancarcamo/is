@@ -996,7 +996,7 @@ describe('is', () => {
       expect(is.type()).toEqual('undefined');
       expect(is.type(undefined)).toEqual('undefined');
     });
-    it('should return "undefined" on valid value', () => {
+    it('should return "regexp" on valid value', () => {
       expect(is.type(/\d/)).toEqual('regexp');
     });
     it('should return "date" on valid instance value', () => {
