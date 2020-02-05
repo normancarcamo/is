@@ -35,7 +35,7 @@ A data type checker and validator.
   - [is.date.instance](#date-instance)
   - [is.type](#type)
 - [Contributors](#Contributors)
-- [License](#License-&-copyright)
+- [License](#License)
 
 ## Installation
 
@@ -407,7 +407,7 @@ expect(is.type(() => {})).toEqual('function');
 
 - Norman Carcamo <normancarcamo@gmail.com>
 
-## License & copyright
+## License
 
 © Norman Carcamo, Software Developer
 
