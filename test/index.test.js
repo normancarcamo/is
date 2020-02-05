@@ -219,10 +219,13 @@ describe('is', () => {
     });
     it('should be true when value is a valid uuid', () => {
       expect(is.uuid('df54c626-4797-11ea-b77f-2e728ce88125', 'v1')).toBe(true);
-      // missing v2 expect.
+      expect(is.uuid('df54c626-4797-21ea-b77f-2e728ce88125', 'v2')).toBe(true);
       expect(is.uuid('9125a8dc-52ee-365b-a5aa-81b0b3681cf6', 'v3')).toBe(true);
       expect(is.uuid('1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed', 'v4')).toBe(true);
       expect(is.uuid('fdda765f-fc57-5604-a269-52a7df8164ec', 'v5')).toBe(true);
+
+      // automatic version guess:
+      expect(is.uuid('1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed')).toBe(true);
     });
     it('should be false when value is not a valid uuid', () => {
       const values = [
@@ -1008,6 +1011,10 @@ describe('is', () => {
     it('should return "function" on valid value', () => {
       expect(is.type(function(){})).toEqual('function');
       expect(is.type(() => {})).toEqual('function');
+      expect(is.type(async () => {})).toEqual('function');
+    });
+    it('should return "unknown" on invalid value', () => {
+      expect(is.type(Symbol())).toEqual('unknown');
     });
   });
 
@@ -1046,6 +1053,10 @@ describe('is', () => {
       expect(is.between('2010-05-01 10:00:00', '2010-05-30 12:00:00', '2013-05-12 11:00:00')).toBe(false);
       expect(is.between(new Date('2010-05-01'), new Date('2010-05-30'), new Date('2012-05-12'))).toBe(false);
       expect(is.between(new Date('2010-05-01').toISOString(), new Date('2013-05-30').toISOString(), new Date('2016-05-12').toISOString())).toBe(false);
+
+      // unknown types:
+      expect(is.between('dsjn', 'ndnnd', '314.1')).toBe(false);
+      expect(is.between(true, false, [])).toBe(false);
     });
   });
 });

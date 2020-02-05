@@ -179,18 +179,16 @@ function $port(x) {
 }
 
 function $between(min, max, val, parse) {
-  if (arguments.length >= 3) {
-    if ($number(min, parse) && $number(max, parse) && $number(val, parse)) {
-      return val >= min && val <= max;
-    }
-  
-    if ($string(min) && $string(max) && $string(val)) {
-      return val >= min && val <= max;
-    }
-  
-    if ($date.valid(min) && $date.valid(max) && $date.valid(val)) {
-      return val >= min && val <= max;
-    }
+  if ($number(min, parse) && $number(max, parse) && $number(val, parse)) {
+    return val >= min && val <= max;
+  }
+
+  if ($string(min) && $string(max) && $string(val)) {
+    return val >= min && val <= max;
+  }
+
+  if ($date.valid(min) && $date.valid(max) && $date.valid(val)) {
+    return val >= min && val <= max;
   }
 
   return false;
@@ -279,6 +277,7 @@ function $type(x, y) {
   if ($date.instance(x)) return 'date';
   if ($string(x)) return 'string';
   if ($function(x) || $async_function(x)) return 'function';
+  return 'unknown';
 }
 
 module.exports = {
