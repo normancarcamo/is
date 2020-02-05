@@ -34,6 +34,8 @@ A data type checker and validator.
   - [is.date.iso](#date-iso)
   - [is.date.instance](#date-instance)
   - [is.type](#type)
+- [Contributors](#Contributors)
+- [License](#License-&-copyright)
 
 ## Installation
 
