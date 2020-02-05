@@ -28,7 +28,7 @@ A data type checker and validator.
   - [is.ip](#ip)
   - [is.port](#port)
   - [is.date](#date)
-  - [is.date.only](#'date-only')
+  - [is.date.only](#date-only)
   - [is.date.time](#date-time)
   - [is.date.time.only](#date-time-only)
   - [is.date.iso](#date-iso)
