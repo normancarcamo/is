@@ -28,11 +28,11 @@ A data type checker and validator.
   - [is.ip](#ip)
   - [is.port](#port)
   - [is.date](#date)
-  - [is.date.only](#date.only)
-  - [is.date.time](#date.time)
-  - [is.date.time.only](#date.time.only)
-  - [is.date.iso](#date.iso)
-  - [is.date.instance](#date.instance)
+  - [is.date.only](#'date-only')
+  - [is.date.time](#date-time)
+  - [is.date.time.only](#date-time-only)
+  - [is.date.iso](#date-iso)
+  - [is.date.instance](#date-instance)
   - [is.type](#type)
 
 ## Installation
@@ -318,7 +318,7 @@ expect(is.date(Date(2020, 10, 12))).toBe(true);
 expect(is.date(Date('2010-02-03'))).toBe(true);
 ```
 
-### date.only
+### date only
 - ``is.date.only`` (value``: string``)``: boolean``
 
 ```js
@@ -327,7 +327,7 @@ expect(is.date(Date('2010-02-03'))).toBe(true);
 expect(is.date.only('2010-02-03')).toBe(true);
 ```
 
-### date.time
+### date time
 - ``is.date.time`` (value``: string``)``: boolean``
 
 ```js
@@ -336,7 +336,7 @@ expect(is.date.only('2010-02-03')).toBe(true);
 expect(is.date.time('2010-02-03 03:20:14')).toBe(true);
 ```
 
-### date.time.only
+### date time only
 - ``is.date.time.only`` (value``: string``)``: boolean``
 
 ```js
@@ -345,7 +345,7 @@ expect(is.date.time('2010-02-03 03:20:14')).toBe(true);
 expect(is.date.time.only('03:20:14')).toBe(true);
 ```
 
-### date.iso
+### date iso
 - ``is.date.iso`` (value``: string``)``: boolean``
 
 ```js
@@ -356,7 +356,7 @@ expect(is.date.iso('2010-02-03 03:20:14.290Z')).toBe(true);
 expect(is.date.iso('2018-02-11T02:10:14.210Z')).toBe(true);
 ```
 
-### date.instance
+### date instance
 - ``is.date.instance`` (value``: Date``)``: boolean``
 
 ```js
