@@ -2,6 +2,7 @@
 A data type checker and validator.
 
 - [Installation](#installation)
+- [Test](#test)
 - [API](#API)
   - [is.object](#is.object)
   - [is.null](#is.null)
@@ -46,6 +47,12 @@ $ npm install @ncardez/is
 
 ```js
 const is = require('@ncardez/is');
+```
+
+## Test
+
+```shell
+npm run test
 ```
 
 ### is.object
