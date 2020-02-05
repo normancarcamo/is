@@ -5,35 +5,35 @@ A data type checker and validator.
 - [Test](#test)
 - [API](#API)
   - [is.object](#object)
-  - [is.null](#is.null)
-  - [is.undefined](#is.undefined)
-  - [is.number](#is.number)
-  - [is.array](#is.array)
-  - [is.string](#is.string)
-  - [is.boolean](#is.boolean)
-  - [is.uuid](#is.uuid)
-  - [is.integer](#is.integer)
-  - [is.float](#is.float)
-  - [is.positive](#is.positive)
-  - [is.negative](#is.negative)
-  - [is.zero](#is.zero)
-  - [is.between](#is.between)
-  - [is.alpha](#is.alpha)
-  - [is.digit](#is.digit)
-  - [is.function](#is.function)
-  - [is.async_function](#is.async_function)
-  - [is.promise](#is.promise)
-  - [is.empty](#is.empty)
-  - [is.regexp](#is.regexp)
-  - [is.ip](#is.ip)
-  - [is.port](#is.port)
-  - [is.date](#is.date)
-  - [is.date.only](#is.date.only)
-  - [is.date.time](#is.date.time)
-  - [is.date.time.only](#is.date.time.only)
-  - [is.date.iso](#is.date.iso)
-  - [is.date.instance](#is.date.instance)
-  - [is.type](#is.type)
+  - [is.null](#null)
+  - [is.undefined](#undefined)
+  - [is.number](#number)
+  - [is.array](#array)
+  - [is.string](#string)
+  - [is.boolean](#boolean)
+  - [is.uuid](#uuid)
+  - [is.integer](#integer)
+  - [is.float](#float)
+  - [is.positive](#positive)
+  - [is.negative](#negative)
+  - [is.zero](#zero)
+  - [is.between](#between)
+  - [is.alpha](#alpha)
+  - [is.digit](#digit)
+  - [is.function](#function)
+  - [is.async_function](#async_function)
+  - [is.promise](#promise)
+  - [is.empty](#empty)
+  - [is.regexp](#regexp)
+  - [is.ip](#ip)
+  - [is.port](#port)
+  - [is.date](#date)
+  - [is.date.only](#date.only)
+  - [is.date.time](#date.time)
+  - [is.date.time.only](#date.time.only)
+  - [is.date.iso](#date.iso)
+  - [is.date.instance](#date.instance)
+  - [is.type](#type)
 
 ## Installation
 
@@ -55,7 +55,7 @@ const is = require('@ncardez/is');
 npm run test
 ```
 
-## object
+### object
 - ``is.object`` (value``: object``) ``:boolean``
 
 ```js
@@ -64,7 +64,7 @@ npm run test
   expect(is.object({})).toBe(true);
 ```
 
-## is.null
+### null
 - ``is.null`` (value``: null``) ``:boolean``
 
 ```js
@@ -73,7 +73,7 @@ npm run test
   expect(is.null(null)).toBe(true);
 ```
 
-## is.undefined
+### undefined
 - ``is.undefined`` (value``: undefined``)``: boolean``
 
 ```js
@@ -84,7 +84,7 @@ npm run test
   expect(is.undefined(undefined)).toBe(true);
 ```
 
-## is.number
+### number
 - ``is.number`` (value``: number|string``, parse``: boolean``)``: boolean``
   
 ```js
@@ -97,7 +97,7 @@ npm run test
   expect(is.number('13', true)).toBe(true);
 ```
 
-## is.array
+### array
 - ``is.array`` (value``: array``)``: boolean``
 
 ```js
@@ -106,7 +106,7 @@ npm run test
   expect(is.array([])).toBe(true);
 ```
 
-## is.string
+### string
 - ``is.string`` (value``: string``)``: boolean``
 
 ```js
@@ -115,7 +115,7 @@ npm run test
   expect(is.string('')).toBe(true);
 ```
 
-## is.boolean
+### boolean
 - ``is.boolean`` (value``: boolean|string``, parse``: boolean``)``: boolean``
 
 ```js
@@ -130,7 +130,7 @@ npm run test
   expect(is.boolean('false', true)).toBe(true);
 ```
 
-## is.uuid
+### uuid
 - ``is.uuid`` (value`: string`, version`: string`)``: boolean``
 
   value: must be a valid UUID.
@@ -143,7 +143,7 @@ npm run test
 expect(is.uuid('1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed', 'v4')).toBe(true);
 ```
 
-## is.integer
+### integer
 - ``is.integer`` (value``: number|string``)``: boolean``
 
 ```js
@@ -154,7 +154,7 @@ expect(is.integer(23)).toBe(true);
 expect(is.integer('43')).toBe(true);
 ```
 
-## is.float
+### float
 - ``is.float`` (value``: number|string``)``: boolean``
 
 ```js
@@ -164,7 +164,7 @@ expect(is.float(.23)).toBe(true);
 expect(is.float('2.43')).toBe(true);
 ```
 
-## is.positive
+### positive
 - ``is.positive`` (value``: number|string``, parse``: boolean``)``: boolean``
 
 ```js
@@ -175,7 +175,7 @@ expect(is.positive(23)).toBe(true);
 expect(is.positive('2.43')).toBe(true);
 ```
 
-## is.negative
+### negative
 - ``is.negative`` (value``: number|string``, parse``: boolean``)``: boolean``
 
 ```js
@@ -186,7 +186,7 @@ expect(is.negative(-23)).toBe(true);
 expect(is.negative('-2.43')).toBe(true);
 ```
 
-## is.zero
+### zero
 - ``is.zero`` (value``: number|string``, parse``: boolean``)``: boolean``
 
 ```js
@@ -197,7 +197,7 @@ expect(is.zero(0)).toBe(true);
 expect(is.zero('0')).toBe(true);
 ```
 
-## is.between
+### between
 - ``is.between`` (min``: number|string|date``, max``: number|string|date``, value``: number|string|date``, parse``: boolean``)``: boolean``
 
 ```js
@@ -209,7 +209,7 @@ expect(is.between('2010-02-01', '2010-02-20', '2010-02-10')).toBe(true);
 expect(is.between(new Date('2010-02-01'), new Date('2010-02-20'), new Date('2010-02-10'))).toBe(true);
 ```
 
-## is.alpha
+### alpha
 - ``is.alpha`` (value``: string``)``: boolean``
 
 ```js
@@ -220,7 +220,7 @@ expect(is.zero('aknd23')).toBe(true);
 expect(is.zero('0ksjdn =13')).toBe(false);
 ```
 
-## is.digit
+### digit
 - ``is.digit`` (value``: number|string``)``: boolean``
 
 ```js
@@ -230,7 +230,7 @@ expect(is.zero('2')).toBe(true);
 expect(is.zero(3)).toBe(true);
 ```
 
-## is.function
+### function
 - ``is.function`` (value``: function``)``: boolean``
 
 ```js
@@ -241,7 +241,7 @@ expect(is.function(() => {})).toBe(true);
 expect(is.function(function() {})).toBe(true);
 ```
 
-## is.async_function
+### async_function
 - ``is.async_function`` (value``: Async Function``)``: boolean``
 
 ```js
@@ -252,7 +252,7 @@ expect(is.function(async () => {})).toBe(true);
 expect(is.function(async function() {})).toBe(true);
 ```
 
-## is.promise
+### promise
 - ``is.promise`` (value``: Promise``)``: boolean``
 
 ```js
@@ -261,7 +261,7 @@ expect(is.function(async function() {})).toBe(true);
 expect(is.promise(Promise.resolve(2))).toBe(true);
 ```
 
-## is.empty
+### empty
 - ``is.empty`` (value``: string|array|object|function``)``: boolean``
 
 ```js
@@ -278,7 +278,7 @@ expect(is.promise(() => {})).toBe(true);
 expect(is.promise(function () {})).toBe(true);
 ```
 
-## is.regexp
+### regexp
 - ``is.regexp`` (value``: RegExp``)``: boolean``
 
 ```js
@@ -287,7 +287,7 @@ expect(is.promise(function () {})).toBe(true);
 expect(is.regexp(/\d/)).toBe(true);
 ```
 
-## is.ip
+### ip
 - ``is.ip`` (value``: string``)``: boolean``
 
 ```js
@@ -296,7 +296,7 @@ expect(is.regexp(/\d/)).toBe(true);
 expect(is.ip('192.168.0.1')).toBe(true);
 ```
 
-## is.port
+### port
 - ``is.port`` (value``: number``)``: boolean``
 
 ```js
@@ -305,7 +305,7 @@ expect(is.ip('192.168.0.1')).toBe(true);
 expect(is.port(8080)).toBe(true);
 ```
 
-## is.date
+### date
 - ``is.date`` (value``: Date``)``: boolean`` - alias: ``is.date.valid(value: Date): boolean``
 
 ```js
@@ -318,7 +318,7 @@ expect(is.date(Date(2020, 10, 12))).toBe(true);
 expect(is.date(Date('2010-02-03'))).toBe(true);
 ```
 
-## is.date.only
+### date.only
 - ``is.date.only`` (value``: string``)``: boolean``
 
 ```js
@@ -327,7 +327,7 @@ expect(is.date(Date('2010-02-03'))).toBe(true);
 expect(is.date.only('2010-02-03')).toBe(true);
 ```
 
-## is.date.time
+### date.time
 - ``is.date.time`` (value``: string``)``: boolean``
 
 ```js
@@ -336,7 +336,7 @@ expect(is.date.only('2010-02-03')).toBe(true);
 expect(is.date.time('2010-02-03 03:20:14')).toBe(true);
 ```
 
-## is.date.time.only
+### date.time.only
 - ``is.date.time.only`` (value``: string``)``: boolean``
 
 ```js
@@ -345,7 +345,7 @@ expect(is.date.time('2010-02-03 03:20:14')).toBe(true);
 expect(is.date.time.only('03:20:14')).toBe(true);
 ```
 
-## is.date.iso
+### date.iso
 - ``is.date.iso`` (value``: string``)``: boolean``
 
 ```js
@@ -356,7 +356,7 @@ expect(is.date.iso('2010-02-03 03:20:14.290Z')).toBe(true);
 expect(is.date.iso('2018-02-11T02:10:14.210Z')).toBe(true);
 ```
 
-## is.date.instance
+### date.instance
 - ``is.date.instance`` (value``: Date``)``: boolean``
 
 ```js
@@ -367,7 +367,7 @@ expect(is.date.instance(new Date())).toBe(true);
 expect(is.date.instance(new Date('2018-02-11T02:10:14.210Z'))).toBe(true);
 ```
 
-## is.type
+### type
 - ``is.type`` (value``: function|number|boolean|object|array|null|undefined|regexp|date|string|function``, parse``: boolean``)``: string``
 
 ```js
