@@ -1,0 +1,25 @@
+{
+  "name": "@ncardez/is",
+  "version": "1.0.0",
+  "description": "Data type checker and validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/normancarcamo/is.git"
+  },
+  "keywords": [],
+  "author": "Norman Carcamo",
+  "license": "SEE LICENSE IN LICENSE FILE",
+  "bugs": {
+    "url": "https://github.com/normancarcamo/is/issues"
+  },
+  "homepage": "https://github.com/normancarcamo/is#readme",
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "jest-chain": "^1.1.5",
+    "jest-extended": "^0.11.5"
+  }
+}
