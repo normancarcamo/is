@@ -1,5 +1,5 @@
 # is
-A data type checker and validator.
+A data type checker and validator for node (typescript compatible).
 
 - [Installation](#installation)
 - [Test](#test)

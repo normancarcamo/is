@@ -1,7 +1,7 @@
 type tBetween = number | string | Date | any;
 
 class Is {
-  object(value: any): boolean {
+  object(value?: any): boolean {
     if (Object.prototype.toString.call(value) === '[object Object]') {
       return true;
     } else {
@@ -17,15 +17,15 @@ class Is {
     }
   }
 
-  null(value: any): boolean {
+  null(value?: any): boolean {
     return value === null && typeof value === 'object';
   }
 
-  undefined(value: any): boolean {
+  undefined(value?: any): boolean {
     return value === undefined && typeof value === 'undefined';
   }
 
-  number(value: any, parse?: boolean): boolean {
+  number(value?: any, parse?: boolean): boolean {
     if (parse) {
       return (
         typeof value === 'number' ||
@@ -36,22 +36,22 @@ class Is {
     }
   }
 
-  array(value: any): boolean {
+  array(value?: any): boolean {
     const prototype: string = Object.prototype.toString.call(value);
     return prototype === '[object Array]' || Array.isArray(value);
   }
 
-  string(value: any): boolean {
+  string(value?: any): boolean {
     return typeof value === 'string';
   }
 
-  boolean(value: any, parse?: boolean): boolean {
+  boolean(value?: any, parse?: boolean): boolean {
     return (
       typeof value === 'boolean' || !!(parse && /^(false|true)/.test(value))
     );
   }
 
-  uuid(value: any, version?: string): boolean {
+  uuid(value?: any, version?: string): boolean {
     const versions = [
       /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i, // v1
       /^[0-9A-F]{8}-[0-9A-F]{4}-[2][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i, // v2
@@ -87,42 +87,42 @@ class Is {
     return false;
   }
 
-  integer(value: any): boolean {
+  integer(value?: any): boolean {
     return /^([0-9]|\-[0-9])+$/g.test(value as string);
   }
 
-  float(value: any): boolean {
+  float(value?: any): boolean {
     return /(^[0-9]+|^\-[0-9]+)?\.+[0-9]+/.test(value as string);
   }
 
-  positive(value: any, parse?: boolean): boolean {
+  positive(value?: any, parse?: boolean): boolean {
     return this.number(value, parse) && value > 0;
   }
 
-  negative(value: any, parse?: boolean): boolean {
+  negative(value?: any, parse?: boolean): boolean {
     return this.number(value, parse) && value < 0;
   }
 
-  zero(value: any, parse?: boolean): boolean {
+  zero(value?: any, parse?: boolean): boolean {
     return this.number(value, parse) && Number(value) === 0;
   }
 
-  alpha(value: any): boolean {
+  alpha(value?: any): boolean {
     if (!!value && typeof value === 'string') {
       return /^([a-z]|[0-9])+([a-z]|[0-9])?$/gim.test(value);
     }
     return false;
   }
 
-  digit(value: any): boolean {
+  digit(value?: any): boolean {
     return /^\d{1,1}$/.test(value);
   }
 
-  function(value: any): boolean {
+  function(value?: any): boolean {
     return Object.prototype.toString.call(value) === '[object Function]';
   }
 
-  asyncFunction(value: any): boolean {
+  asyncFunction(value?: any): boolean {
     if (value && !(value instanceof Promise)) {
       if (value.constructor && value.constructor.name === 'AsyncFunction') {
         return true;
@@ -131,7 +131,7 @@ class Is {
     return false;
   }
 
-  promise(value: any): boolean {
+  promise(value?: any): boolean {
     if (value && value instanceof Promise) {
       return true;
     } else {
@@ -139,7 +139,7 @@ class Is {
     }
   }
 
-  empty(value: any): boolean {
+  empty(value?: any): boolean {
     if (this.undefined(value) || !arguments.length) {
       return false;
     }
@@ -165,14 +165,14 @@ class Is {
     }
   }
 
-  regexp(value: any): boolean {
+  regexp(value?: any): boolean {
     return (
       value instanceof RegExp ||
       Object.prototype.toString.call(value) === '[object RegExp]'
     );
   }
 
-  ip(value: any): boolean {
+  ip(value?: any): boolean {
     if (this.string(value)) {
       const parts = value.split('.').map((x: number) => x >= 0 && x <= 255);
       if (parts.length === 4) {
@@ -182,14 +182,14 @@ class Is {
     return false;
   }
 
-  port(value: any): boolean {
+  port(value?: any): boolean {
     return !!value && typeof value === 'number' && value > 0 && value <= 65535;
   }
 
   between(
-    min: tBetween,
-    max: tBetween,
-    val: tBetween,
+    min?: tBetween,
+    max?: tBetween,
+    val?: tBetween,
     parse?: boolean,
   ): boolean {
     if (
@@ -211,21 +211,21 @@ class Is {
     return false;
   }
 
-  date(value: any): boolean {
+  date(value?: any): boolean {
     const y: string = /([1-1][9-9][7-9][0-9]|[2-2][0-9][0-9][0-9])/.source;
     const m: string = /([0-0][1-9]|[1-1][0-2])/.source;
     const d: string = /([0-0][1-9]|[1-1][0-9]|[2-2][0-9]|[3-3][0-1])/.source;
     return new RegExp(`^${y}(\/|\-)${m}(\/|\-)${d}$`).test(value);
   }
 
-  time(value: any): boolean {
+  time(value?: any): boolean {
     const hh: string = /([0-1][0-9]|[2-2][0-3])/.source;
     const mm: string = /([0-5][0-9])/.source;
     const ss: string = /([0-5][0-9])/.source;
     return new RegExp(`^${hh}\:${mm}(\:${ss})?$`).test(value);
   }
 
-  dateTime(value: any): boolean {
+  dateTime(value?: any): boolean {
     const y: string = /([1-1][9-9][7-9][0-9]|[2-2][0-9][0-9][0-9])/.source;
     const m: string = /([0-0][1-9]|[1-1][0-2])/.source;
     const d: string = /([0-0][1-9]|[1-1][0-9]|[2-2][0-9]|[3-3][0-1])/.source;
@@ -239,7 +239,7 @@ class Is {
     return new RegExp(`^${date}(\ |\T)${time}$`).test(value);
   }
 
-  dateISO(value: any): boolean {
+  dateISO(value?: any): boolean {
     const y: string = /([1-1][9-9][7-9][0-9]|[2-2][0-9][0-9][0-9])/.source;
     const m: string = /([0-0][1-9]|[1-1][0-2])/.source;
     const d: string = /([0-0][1-9]|[1-1][0-9]|[2-2][0-9]|[3-3][0-1])/.source;
@@ -255,13 +255,13 @@ class Is {
     return new RegExp(`^${date}(\ |\T)${time}$`).test(value);
   }
 
-  dateInstance(value: any): boolean {
+  dateInstance(value?: any): boolean {
     const prototype: string = Object.prototype.toString.call(value);
     const res: boolean = prototype === '[object Date]' && !isNaN(value);
     return (value && res) || value instanceof Date;
   }
 
-  dateValid(value: any): boolean {
+  dateValid(value?: any): boolean {
     if (!!value && typeof value === 'string') {
       return !isNaN(new Date(value).getDate());
     } else {
