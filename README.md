@@ -34,6 +34,9 @@ A data type checker and validator for node (typescript compatible).
   - [is.dateInstance](#dateInstance)
   - [is.dateValid](#dateValid)
   - [is.type](#type)
+  - [is.error](#error)
+  - [is.jwt](#jwt)
+  - [is.jsonwebtoken](#jwt) - alias for ``is.jwt``.
 - [Contributors](#Contributors)
 - [License](#License)
 
@@ -416,6 +419,32 @@ expect(is.type(function(){})).toEqual('function');
 expect(is.type(() => {})).toEqual('function');
 ```
 
+### error
+- ``is.error`` (value``: Error``)``: boolean``
+
+```js
+// Example:
+
+expect(is.error(new Error('Ouch!'))).toBe(true);
+
+expect(is.error({ stack: 'aa', message: 'sss' })).toBe(true);
+```
+
+### jwt
+- ``is.jwt`` (value``: string``)``: boolean``
+- ``is.jsonwebtoken`` (value``: string``)``: boolean``
+
+```js
+// Example:
+
+const token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' +
+  '.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ' +
+  '.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
+expect(is.jwt(token)).toBe(true);
+
+expect(is.jsonwebtoken(token)).toBe(true);
+```
 
 ## Contributors
 
