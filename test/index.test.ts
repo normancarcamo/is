@@ -1033,4 +1033,47 @@ describe('is', () => {
       ].forEach(value => expect(is.error(value)).toBe(false));
     });
   });
+
+  describe('jwt - alias: jsonwebtoken', () => {
+    it('should be a function', () => {
+      expect(is.jwt).toBeFunction();
+    });
+    it('should be true when is a valid jwt', () => {
+      const token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' +
+        '.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ' +
+        '.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+      expect(is.jwt(token)).toBe(true);
+      expect(is.jsonwebtoken(token)).toBe(true);
+    });
+    it('should be false when is not a valid jwt', () => {
+      [
+        '1.3d',
+        'nw-1',
+        -1.3,
+        -0.3,
+        '1.3',
+        '0.3',
+        '43',
+        '-1',
+        '-1.3',
+        '-43',
+        '65536',
+        Date.now(),
+        null,
+        undefined,
+        {},
+        [],
+        true,
+        false,
+        () => {},
+        function() {},
+        65536,
+        '2010-02-03',
+        '2010-02-03 12:23:21',
+        'eyJhbGciOiJIUz.ey5MDIyfQ.xwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+        'eyJhbGciOiJIUz.ey5MDIyfQ.....',
+        'eyJhbGciOiJIUz.ey5MDIyfQ.....jnjsnf'
+      ].forEach(value => expect(is.jwt(value)).toBe(false));
+    });
+  });
 });

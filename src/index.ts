@@ -306,6 +306,25 @@ class Is {
 
     return false;
   }
+
+  jwt(value?: string|any): boolean {
+    if (this.string(value) && 
+    !this.empty(value) && 
+    value.includes('.') && 
+    value.match(/\./g).length === 2) {
+      const groups = value.split('.');
+      if (this.array(groups) && !this.empty(groups) && groups.length === 3) {
+        if (value.length > 100) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  // Aliases:
+  jsonwebtoken = this.jwt;
 }
 
 export default new Is();
