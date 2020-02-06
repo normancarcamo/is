@@ -1,25 +1,42 @@
 {
   "name": "@ncardez/is",
   "version": "1.0.1",
-  "description": "Data type checker and validator",
-  "main": "index.js",
+  "description": "Data type checker",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [ "lib/**/*" ],
   "scripts": {
-    "test": "jest"
+    "build": "tsc",
+    "test": "jest --config jest.config.js",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/normancarcamo/is.git"
   },
-  "keywords": [],
+  "keywords": [ "is", "type-checker" ],
   "author": "Norman Carcamo",
   "license": "SEE LICENSE IN LICENSE FILE",
   "bugs": {
     "url": "https://github.com/normancarcamo/is/issues"
   },
-  "homepage": "https://github.com/normancarcamo/is#readme",
+  "homepage": "https://github.com/normancarcamo/is",
   "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "@types/node": "^13.7.0",
     "jest": "^25.1.0",
     "jest-chain": "^1.1.5",
-    "jest-extended": "^0.11.5"
+    "jest-extended": "^0.11.5",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.0",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
   }
 }

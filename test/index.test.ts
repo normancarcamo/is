@@ -1,13 +1,13 @@
-const is = require('../index.js');
+import is from '../src/index';
 
 describe('is', () => {
   it('should be a javascript object literal', () => {
     expect(is).toBeObject();
   });
+  
   describe('object', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.object) === "[object Function]")
-      .toBe(true);
+      expect(is.object).toBeFunction();
     });
     it('should be true when value is a javascript object literal', () => {
       expect(is.object({})).toBe(true);
@@ -28,14 +28,12 @@ describe('is', () => {
         null,
         undefined
       ].forEach(value => expect(is.object(value)).toBe(false));
-      expect(is.object()).toBe(false);
     });
   });
 
   describe('null', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.null) === "[object Function]")
-      .toBe(true);
+      expect(is.null).toBeFunction();
     });
     it('should be true when value is null', () => {
       expect(is.null(null)).toBe(true);
@@ -55,18 +53,15 @@ describe('is', () => {
         /\d/g,
         undefined
       ].forEach(value => expect(is.null(value)).toBe(false));
-      expect(is.null()).toBe(false);
     });
   });
 
   describe('undefined', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.undefined) === "[object Function]")
-      .toBe(true);
+      expect(is.undefined).toBeFunction();
     });
     it('should be true when value is undefined', () => {
       expect(is.undefined(undefined)).toBe(true);
-      expect(is.undefined()).toBe(true);
     });
     it('should be false when value is not undefined', () => {
       [
@@ -88,8 +83,7 @@ describe('is', () => {
 
   describe('number', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.number) === "[object Function]")
-      .toBe(true);
+      expect(is.number).toBeFunction();
     });
     it('should be true when value is a number', () => {
       expect(is.number(12)).toBe(true);
@@ -126,8 +120,7 @@ describe('is', () => {
 
   describe('array', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.array) === "[object Function]")
-      .toBe(true);
+      expect(is.array).toBeFunction();
     });
     it('should be true when value is an array', () => {
       expect(is.array([])).toBe(true);
@@ -153,8 +146,7 @@ describe('is', () => {
 
   describe('string', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.string) === "[object Function]")
-      .toBe(true);
+      expect(is.string).toBeFunction();
     });
     it('should be true when value is string', () => {
       expect(is.string('')).toBe(true);
@@ -179,8 +171,7 @@ describe('is', () => {
 
   describe('boolean', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.boolean) === "[object Function]")
-      .toBe(true);
+      expect(is.boolean).toBeFunction();
     });
     it('should be true when value is boolean', () => {
       expect(is.boolean(true)).toBe(true);
@@ -214,8 +205,7 @@ describe('is', () => {
 
   describe('uuid', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.uuid) === "[object Function]")
-      .toBe(true);
+      expect(is.uuid).toBeFunction();
     });
     it('should be true when value is a valid uuid', () => {
       expect(is.uuid('df54c626-4797-11ea-b77f-2e728ce88125', 'v1')).toBe(true);
@@ -263,8 +253,7 @@ describe('is', () => {
 
   describe('integer', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.integer) === "[object Function]")
-      .toBe(true);
+      expect(is.integer).toBeFunction();
     });
     it('should be true when value is a valid integer', () => {
       expect(is.integer(65)).toBe(true);
@@ -299,8 +288,7 @@ describe('is', () => {
 
   describe('float', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.float) === "[object Function]")
-      .toBe(true);
+      expect(is.float).toBeFunction();
     });
     it('should be true when value is a valid float', () => {
       expect(is.float(.65)).toBe(true);
@@ -335,8 +323,7 @@ describe('is', () => {
 
   describe('positive', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.positive) === "[object Function]")
-      .toBe(true);
+      expect(is.positive).toBeFunction();
     });
     it('should be true when value is a valid positive', () => {
       expect(is.positive(.65)).toBe(true);
@@ -368,8 +355,7 @@ describe('is', () => {
 
   describe('negative', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.negative) === "[object Function]")
-      .toBe(true);
+      expect(is.negative).toBeFunction();
     });
     it('should be true when value is a valid negative', () => {
       expect(is.negative(-.65)).toBe(true);
@@ -401,8 +387,7 @@ describe('is', () => {
 
   describe('zero', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.zero) === "[object Function]")
-      .toBe(true);
+      expect(is.zero).toBeFunction();
     });
     it('should be true when value is a valid zero', () => {
       expect(is.zero(0)).toBe(true);
@@ -437,8 +422,7 @@ describe('is', () => {
 
   describe('alpha', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.alpha) === "[object Function]")
-      .toBe(true);
+      expect(is.alpha).toBeFunction();
     });
     it('should be true when value is a valid alpha', () => {
       expect(is.alpha('kj23')).toBe(true);
@@ -468,8 +452,7 @@ describe('is', () => {
 
   describe('digit', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.digit) === "[object Function]")
-      .toBe(true);
+      expect(is.digit).toBeFunction();
     });
     it('should be true when value is a valid digit', () => {
       expect(is.digit('2')).toBe(true);
@@ -502,8 +485,7 @@ describe('is', () => {
 
   describe('function', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.function) === "[object Function]")
-      .toBe(true);
+      expect(is.function).toBeFunction();
     });
     it('should be true when value is a valid function', () => {
       expect(is.function(() => {})).toBe(true);
@@ -532,43 +514,9 @@ describe('is', () => {
     });
   });
 
-  describe('async_function', () => {
-    it('should be a async_function', () => {
-      expect(Object.prototype.toString.call(is.async_function) === "[object Function]")
-      .toBe(true);
-    });
-    it('should be true when value is a valid async_function', () => {
-      expect(is.async_function(async () => {})).toBe(true);
-    });
-    it('should be false when value is not a valid async_function', () => {
-      [
-        /\d/g,
-        null,
-        undefined,
-        '1.3d',
-        'nw-1',
-        -1.3,
-        -0.3,
-        '1.3',
-        '-1',
-        '-1.3',
-        '0.3',
-        '43',
-        '-43',
-        {},
-        [],
-        true,
-        false,
-        () => {},
-        function() {}
-      ].forEach(value => expect(is.async_function(value)).toBe(false));
-    });
-  });
-
   describe('promise', () => {
     it('should be a promise', () => {
-      expect(Object.prototype.toString.call(is.promise) === "[object Function]")
-      .toBe(true);
+      expect(is.promise).toBeFunction();
     });
     it('should be true when value is a valid promise', () => {
       expect(is.promise(Promise.resolve(2))).toBe(true);
@@ -600,8 +548,7 @@ describe('is', () => {
 
   describe('empty', () => {
     it('should be a empty', () => {
-      expect(Object.prototype.toString.call(is.empty) === "[object Function]")
-      .toBe(true);
+      expect(is.empty).toBeFunction();
     });
     it('should be true when value is a valid empty', () => {
       expect(is.empty( () => {} )).toBe(true);
@@ -637,8 +584,7 @@ describe('is', () => {
 
   describe('regexp', () => {
     it('should be a regexp', () => {
-      expect(Object.prototype.toString.call(is.regexp) === "[object Function]")
-      .toBe(true);
+      expect(is.regexp).toBeFunction();
     });
     it('should be true when value is a valid regexp', () => {
       expect(is.regexp(/\d/)).toBe(true);
@@ -669,8 +615,7 @@ describe('is', () => {
 
   describe('ip', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.ip) === "[object Function]")
-      .toBe(true);
+      expect(is.ip).toBeFunction();
     });
     it('should be true when value is a valid ip', () => {
       expect(is.ip('192.168.0.1')).toBe(true);
@@ -701,8 +646,7 @@ describe('is', () => {
 
   describe('port', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.port) === "[object Function]")
-      .toBe(true);
+      expect(is.port).toBeFunction();
     });
     it('should be true when value is a valid port', () => {
       expect(is.port(2334)).toBe(true);
@@ -733,49 +677,12 @@ describe('is', () => {
     });
   });
 
-  describe('date - (alias: date.valid)', () => {
+  describe('date', () => {
     it('should be a function', () => {
-      expect(Object.prototype.toString.call(is.date) === "[object Function]")
-      .toBe(true);
-    });
-    it('should be true when value is a valid date', () => {
-      expect(is.date(Date())).toBe(true);
-      expect(is.date(Date(2020, 10, 12))).toBe(true);
-      expect(is.date(Date('2010-02-03'))).toBe(true);
-    });
-    it('should be false when value is not a valid date', () => {
-      [
-        // '1.3d',
-        // 'nw-1',
-        // -1.3,
-        // -0.3,
-        // '1.3',
-        // '0.3',
-        // '43',
-        // '-1',
-        // '-1.3',
-        // '-43',
-        // '65536',
-        Date.now(),
-        null,
-        undefined,
-        {},
-        [],
-        true,
-        false,
-        () => {},
-        function() {},
-        65536,
-      ].forEach(value => expect(is.date(value)).toBe(false));
-    });
-  });
-
-  describe('date.only', () => {
-    it('should be a function', () => {
-      expect(is.date.only).toBeFunction();
+      expect(is.date).toBeFunction();
     });
     it('should be true when is a valid date', () => {
-      expect(is.date.only('2010-02-03')).toBe(true);
+      expect(is.date('2010-02-03')).toBe(true);
     });
     it('should be false when is not a valid date', () => {
       [
@@ -801,51 +708,16 @@ describe('is', () => {
         function() {},
         65536,
         '2010-02-03 03:20:14'
-      ].forEach(value => expect(is.date.only(value)).toBe(false));
+      ].forEach(value => expect(is.date(value)).toBe(false));
     });
   });
 
-  describe('date.time', () => {
+  describe('time', () => {
     it('should be a function', () => {
-      expect(is.date.time).toBeFunction();
+      expect(is.time).toBeFunction();
     });
     it('should be true when is a valid date', () => {
-      expect(is.date.time('2010-02-03 03:20:14')).toBe(true);
-    });
-    it('should be false when is not a valid date', () => {
-      [
-        '1.3d',
-        'nw-1',
-        -1.3,
-        -0.3,
-        '1.3',
-        '0.3',
-        '43',
-        '-1',
-        '-1.3',
-        '-43',
-        '65536',
-        Date.now(),
-        null,
-        undefined,
-        {},
-        [],
-        true,
-        false,
-        () => {},
-        function() {},
-        65536,
-        '2010-02-03'
-      ].forEach(value => expect(is.date.time(value)).toBe(false));
-    });
-  });
-
-  describe('date.time.only', () => {
-    it('should be a function', () => {
-      expect(is.date.time.only).toBeFunction();
-    });
-    it('should be true when is a valid date', () => {
-      expect(is.date.time.only('03:20:14')).toBe(true);
+      expect(is.time('03:20:14')).toBe(true);
     });
     it('should be false when is not a valid date', () => {
       [
@@ -872,17 +744,91 @@ describe('is', () => {
         65536,
         '2010-02-03',
         '2010-02-03 12:23:21',
-      ].forEach(value => expect(is.date.time.only(value)).toBe(false));
+      ].forEach(value => expect(is.time(value)).toBe(false));
     });
   });
 
-  describe('date.iso', () => {
+  describe('dateTime', () => {
     it('should be a function', () => {
-      expect(is.date.iso).toBeFunction();
+      expect(is.dateTime).toBeFunction();
     });
     it('should be true when is a valid date', () => {
-      expect(is.date.iso('2010-02-03 03:20:14.290Z')).toBe(true);
-      expect(is.date.iso('2018-02-11T02:10:14.210Z')).toBe(true);
+      expect(is.dateTime('2010-02-03 03:20:14')).toBe(true);
+    });
+    it('should be false when is not a valid date', () => {
+      [
+        '1.3d',
+        'nw-1',
+        -1.3,
+        -0.3,
+        '1.3',
+        '0.3',
+        '43',
+        '-1',
+        '-1.3',
+        '-43',
+        '65536',
+        Date.now(),
+        null,
+        undefined,
+        {},
+        [],
+        true,
+        false,
+        () => {},
+        function() {},
+        65536,
+        '2010-02-03'
+      ].forEach(value => expect(is.dateTime(value)).toBe(false));
+    });
+  });
+
+  describe('dateISO', () => {
+    it('should be a function', () => {
+      expect(is.dateISO).toBeFunction();
+    });
+    it('should be true when is a valid date', () => {
+      expect(is.dateISO('2010-02-03 03:20:14')).toBe(true);
+      expect(is.dateISO('2010-02-03 03:20:14.290z')).toBe(true);
+      expect(is.dateISO('2010-02-03 03:20:14.290Z')).toBe(true);
+      expect(is.dateISO('2018-02-11T02:10:14.210Z')).toBe(true);
+    });
+    it('should be false when is not a valid date', () => {
+      [
+        '1.3d',
+        'nw-1',
+        -1.3,
+        -0.3,
+        '1.3',
+        '0.3',
+        '43',
+        '-1',
+        '-1.3',
+        '-43',
+        '65536',
+        Date.now(),
+        null,
+        undefined,
+        {},
+        [],
+        true,
+        false,
+        () => {},
+        function() {},
+        65536,
+        '2010-02-03',
+        new Date().toString(),
+      ].forEach(value => expect(is.dateISO(value)).toBe(false));
+    });
+  });
+
+  describe('dateInstance', () => {
+    it('should be a function', () => {
+      expect(is.dateInstance).toBeFunction();
+    });
+    it('should be true when is a valid date', () => {
+      expect(is.dateInstance(new Date())).toBe(true);
+      expect(is.dateInstance(new Date('2018-02-11T02:10:14.210Z'))).toBe(true);
     });
     it('should be false when is not a valid date', () => {
       [
@@ -911,31 +857,22 @@ describe('is', () => {
         '2010-02-03 12:11:12',
         '2010-02-03T12:11:12',
         new Date().toString()
-      ].forEach(value => expect(is.date.iso(value)).toBe(false));
+      ].forEach(value => expect(is.dateInstance(value)).toBe(false));
     });
   });
 
-  describe('date.instance', () => {
+  describe('dateValid', () => {
     it('should be a function', () => {
-      expect(is.date.instance).toBeFunction();
+      expect(is.dateValid).toBeFunction();
     });
-    it('should be true when is a valid date', () => {
-      expect(is.date.instance(new Date())).toBe(true);
-      expect(is.date.instance(new Date('2018-02-11T02:10:14.210Z'))).toBe(true);
+    it('should be true when value is a valid date', () => {
+      expect(is.dateValid('2010-02-03')).toBe(true);
+      expect(is.dateValid(new Date())).toBe(true);
+      expect(is.dateValid(new Date(2020, 10, 12))).toBe(true);
+      expect(is.dateValid(new Date('2010-02-03'))).toBe(true);
     });
-    it('should be false when is not a valid date', () => {
+    it('should be false when value is not a valid date', () => {
       [
-        '1.3d',
-        'nw-1',
-        -1.3,
-        -0.3,
-        '1.3',
-        '0.3',
-        '43',
-        '-1',
-        '-1.3',
-        '-43',
-        '65536',
         Date.now(),
         null,
         undefined,
@@ -946,11 +883,7 @@ describe('is', () => {
         () => {},
         function() {},
         65536,
-        '2010-02-03',
-        '2010-02-03 12:11:12',
-        '2010-02-03T12:11:12',
-        new Date().toString()
-      ].forEach(value => expect(is.date.instance(value)).toBe(false));
+      ].forEach(value => expect(is.dateValid(value)).toBe(false));
     });
   });
 
