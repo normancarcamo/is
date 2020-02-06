@@ -996,4 +996,41 @@ describe('is', () => {
       expect(is.between(true, false, [])).toBe(false);
     });
   });
+
+  describe('error', () => {
+    it('should be a function', () => {
+      expect(is.error).toBeFunction();
+    });
+    it('should be true when is a valid error', () => {
+      expect(is.error(new Error('Ouch!'))).toBe(true);
+      expect(is.error({ stack: 'aa', message: 'sss' })).toBe(true);
+    });
+    it('should be false when is not a valid error', () => {
+      [
+        '1.3d',
+        'nw-1',
+        -1.3,
+        -0.3,
+        '1.3',
+        '0.3',
+        '43',
+        '-1',
+        '-1.3',
+        '-43',
+        '65536',
+        Date.now(),
+        null,
+        undefined,
+        {},
+        [],
+        true,
+        false,
+        () => {},
+        function() {},
+        65536,
+        '2010-02-03',
+        '2010-02-03 12:23:21',
+      ].forEach(value => expect(is.error(value)).toBe(false));
+    });
+  });
 });

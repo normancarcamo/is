@@ -289,6 +289,23 @@ class Is {
     if (this.function(value)) return 'function';
     return 'unknown';
   }
+
+  error(value?: any): boolean {
+    if (Object.prototype.toString.call(value) === '[object Error]') {
+      return true;
+    }
+
+    if (value && value.stack && value.message) {
+      if (
+        typeof value.stack === 'string' &&
+        typeof value.message === 'string'
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 export default new Is();
