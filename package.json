@@ -1,26 +1,31 @@
 {
   "name": "@ncardez/is",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Data type checker",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": [ "lib/**/*" ],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "jest --config jest.config.js",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/normancarcamo/is.git"
   },
-  "keywords": [ "is", "type-checker" ],
+  "keywords": [
+    "is",
+    "type-checker"
+  ],
   "author": "Norman Carcamo",
   "license": "SEE LICENSE IN LICENSE FILE",
   "bugs": {
