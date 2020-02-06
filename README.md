@@ -21,18 +21,18 @@ A data type checker and validator.
   - [is.alpha](#alpha)
   - [is.digit](#digit)
   - [is.function](#function)
-  - [is.async_function](#async_function)
+  - [is.asyncFunction](#asyncFunction)
   - [is.promise](#promise)
   - [is.empty](#empty)
   - [is.regexp](#regexp)
   - [is.ip](#ip)
   - [is.port](#port)
   - [is.date](#date)
-  - [is.date.only](#date-only)
-  - [is.date.time](#date-time)
-  - [is.date.time.only](#date-time-only)
-  - [is.date.iso](#date-iso)
-  - [is.date.instance](#date-instance)
+  - [is.time](#time)
+  - [is.dateTime](#dateTime)
+  - [is.dateISO](#dateISO)
+  - [is.dateInstance](#dateInstance)
+  - [is.dateValid](#dateValid)
   - [is.type](#type)
 - [Contributors](#Contributors)
 - [License](#License)
@@ -243,15 +243,15 @@ expect(is.function(() => {})).toBe(true);
 expect(is.function(function() {})).toBe(true);
 ```
 
-### async_function
-- ``is.async_function`` (value``: Async Function``)``: boolean``
+### asyncFunction
+- ``is.asyncFunction`` (value``: Async Function``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.function(async () => {})).toBe(true);
+expect(is.asyncFunction(async () => {})).toBe(true);
 
-expect(is.function(async function() {})).toBe(true);
+expect(is.asyncFunction(async function() {})).toBe(true);
 ```
 
 ### promise
@@ -308,65 +308,79 @@ expect(is.port(8080)).toBe(true);
 ```
 
 ### date
-- ``is.date`` (value``: Date``)``: boolean`` - alias: ``is.date.valid(value: Date): boolean``
+- ``is.date`` (value``: string``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.date(Date())).toBe(true);
-
-expect(is.date(Date(2020, 10, 12))).toBe(true);
-
-expect(is.date(Date('2010-02-03'))).toBe(true);
+expect(is.date('2010-02-03')).toBe(true);
 ```
 
-### date only
-- ``is.date.only`` (value``: string``)``: boolean``
+### time
+- ``is.time`` (value``: string``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.date.only('2010-02-03')).toBe(true);
+expect(is.time('03:20:14')).toBe(true);
 ```
 
-### date time
-- ``is.date.time`` (value``: string``)``: boolean``
+### dateTime
+- ``is.dateTime`` (value``: string``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.date.time('2010-02-03 03:20:14')).toBe(true);
+expect(is.dateTime('2010-02-03 03:20:14')).toBe(true);
 ```
 
-### date time only
-- ``is.date.time.only`` (value``: string``)``: boolean``
+### dateISO
+- ``is.dateISO`` (value``: string``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.date.time.only('03:20:14')).toBe(true);
+expect(is.dateISO('2010-02-03 03:20:14.290z')).toBe(true);
+
+expect(is.dateISO('2010-02-03 03:20:14')).toBe(true);
+
+expect(is.dateISO('2010-02-03T03:20:14')).toBe(true);
+
+expect(is.dateISO('2010-02-03 03:20:14.290Z')).toBe(true);
+
+expect(is.dateISO('2018-02-11T02:10:14.210Z')).toBe(true);
 ```
 
-### date iso
-- ``is.date.iso`` (value``: string``)``: boolean``
+### dateInstance
+- ``is.dateInstance`` (value``: Date``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.date.iso('2010-02-03 03:20:14.290Z')).toBe(true);
+expect(is.dateInstance(new Date())).toBe(true);
 
-expect(is.date.iso('2018-02-11T02:10:14.210Z')).toBe(true);
+expect(is.dateInstance(new Date('2018-02-11T02:10:14.210Z'))).toBe(true);
 ```
 
-### date instance
-- ``is.date.instance`` (value``: Date``)``: boolean``
+### dateValid
+- ``is.dateValid`` (value``: Date``)``: boolean``
 
 ```js
 // Example:
 
-expect(is.date.instance(new Date())).toBe(true);
+expect(is.dateValid('2010-02-03')).toBe(true);
 
-expect(is.date.instance(new Date('2018-02-11T02:10:14.210Z'))).toBe(true);
+expect(is.dateValid('2010-02-03 11:11:11')).toBe(true);
+
+expect(is.dateValid('2010-02-03 11:11:11.000Z')).toBe(true);
+
+expect(is.dateValid('2010-02-03T11:11:11.000Z')).toBe(true);
+
+expect(is.dateValid(new Date())).toBe(true);
+
+expect(is.dateValid(new Date(2020, 10, 12))).toBe(true);
+
+expect(is.dateValid(new Date('2010-02-03'))).toBe(true);
 ```
 
 ### type

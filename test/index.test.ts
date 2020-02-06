@@ -788,8 +788,9 @@ describe('is', () => {
       expect(is.dateISO).toBeFunction();
     });
     it('should be true when is a valid date', () => {
-      expect(is.dateISO('2010-02-03 03:20:14')).toBe(true);
       expect(is.dateISO('2010-02-03 03:20:14.290z')).toBe(true);
+      expect(is.dateISO('2010-02-03 03:20:14')).toBe(true);
+      expect(is.dateISO('2010-02-03T03:20:14')).toBe(true);
       expect(is.dateISO('2010-02-03 03:20:14.290Z')).toBe(true);
       expect(is.dateISO('2018-02-11T02:10:14.210Z')).toBe(true);
     });
@@ -867,6 +868,9 @@ describe('is', () => {
     });
     it('should be true when value is a valid date', () => {
       expect(is.dateValid('2010-02-03')).toBe(true);
+      expect(is.dateValid('2010-02-03 11:11:11')).toBe(true);
+      expect(is.dateValid('2010-02-03 11:11:11.000Z')).toBe(true);
+      expect(is.dateValid('2010-02-03T11:11:11.000Z')).toBe(true);
       expect(is.dateValid(new Date())).toBe(true);
       expect(is.dateValid(new Date(2020, 10, 12))).toBe(true);
       expect(is.dateValid(new Date('2010-02-03'))).toBe(true);
