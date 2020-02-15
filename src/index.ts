@@ -4,8 +4,6 @@ export class Is {
   // Aliases:
   jsonwebtoken = this.jwt;
 
-  constructor() {}
-
   object(value?: any): boolean {
     if (Object.prototype.toString.call(value) === '[object Object]') {
       return true;
