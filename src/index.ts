@@ -1,6 +1,11 @@
 type tBetween = number | string | Date | any;
 
-class Is {
+export class Is {
+  // Aliases:
+  jsonwebtoken = this.jwt;
+
+  constructor() {}
+
   object(value?: any): boolean {
     if (Object.prototype.toString.call(value) === '[object Object]') {
       return true;
@@ -324,9 +329,6 @@ class Is {
 
     return false;
   }
-
-  // Aliases:
-  jsonwebtoken = this.jwt;
 }
 
 export default new Is();
